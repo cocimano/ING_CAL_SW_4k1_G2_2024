@@ -64,7 +64,7 @@ Integrantes del Grupo
 | \<Nombre_Guía> | Nombre de la guía de trabajos prácticos. Ejemplo: |
 | \<Tema_B> | Nombre del tema correspondiente a la bibliografía |
 | \<Título_B> | Nombre de la bibliografía |
-| \IS | Nombre de la materia, Ingeniería y Calidad de Software |
+| IS | Nombre de la materia, Ingeniería y Calidad de Software |
 | \<ClaseXX> | Número de clase. Ejemplos: 01, 02, 10 |
 | <Tema_C> | Tema Clase. Ejemplo: SCM |
 
