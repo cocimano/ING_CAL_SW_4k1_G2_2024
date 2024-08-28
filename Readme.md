@@ -53,15 +53,15 @@ Integrantes del Grupo
 
 | **Sigla** | **Significado** |
 | --- | --- |
-| <URL_Repo> | Dirección web del repositorio: https://github.com/cocimano/ING_CAL_SW_4k1_G2_2024/blob/main |
-| <TPXX> | Número de Trabajo Práctico. Ejemplos: TP01, TP15 |
-| <Tema_TP> | Nombre Tema Correspondiente al TP |
-| <NE> | Nombre de Ejercicio |
-| <ParcialX> | Número de Parcial. Ejemplos: Parcial1, Parcial2 |
-| <Leg> | Legajo estudiante que desarrolló el archivo |
-| <Nombre_Guía> | Nombre de la guía de trabajos prácticos. Ejemplo: |
-| <Tema_B> | Nombre del tema correspondiente a la bibliografía |
-| <Título_B> | Nombre de la bibliografía |
+| \<URL_Repo> | Dirección web del repositorio: https://github.com/cocimano/ING_CAL_SW_4k1_G2_2024/blob/main |
+| \<TPXX> | Número de Trabajo Práctico. Ejemplos: TP01, TP15 |
+| \<Tema_TP> | Nombre Tema Correspondiente al TP |
+| \<NE> | Nombre de Ejercicio |
+| \<ParcialX> | Número de Parcial. Ejemplos: Parcial1, Parcial2 |
+| \<Leg> | Legajo estudiante que desarrolló el archivo |
+| \<Nombre_Guía> | Nombre de la guía de trabajos prácticos. Ejemplo: |
+| \<Tema_B> | Nombre del tema correspondiente a la bibliografía |
+| \<Título_B> | Nombre de la bibliografía |
 | IS | Nombre de la materia, Ingeniería y Calidad de Software |
 
 ## **Criterios de línea base**
