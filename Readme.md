@@ -34,8 +34,8 @@ Integrantes del Grupo
 ---
 
 ## **Estructura completa**
+![Estructura](https://github.com/user-attachments/assets/c0f5d393-2fb2-493c-8543-14b571dea3a8)
 
-[https://lh7-rt.googleusercontent.com/docsz/AD_4nXerO09ZYOgNa1sAhir4iCxYdYzEJJ4g1GoAFuLsFqCE2PsupEnuvcdzoFG34Zsd8GpErzYSkKWEKShI-2Ferw7pCSFuHyo_POSjRAOOFIL_khGOD-cMgFZ7AXjXnzFLDlyvZ_PWiLyU__VBgpbSHvZK6Zv1?key=E8AFUq6xu9FJFxjzdmHMOQ](https://lh7-rt.googleusercontent.com/docsz/AD_4nXerO09ZYOgNa1sAhir4iCxYdYzEJJ4g1GoAFuLsFqCE2PsupEnuvcdzoFG34Zsd8GpErzYSkKWEKShI-2Ferw7pCSFuHyo_POSjRAOOFIL_khGOD-cMgFZ7AXjXnzFLDlyvZ_PWiLyU__VBgpbSHvZK6Zv1?key=E8AFUq6xu9FJFxjzdmHMOQ)
 
 ## **Listado de ítems de configuración**
 
