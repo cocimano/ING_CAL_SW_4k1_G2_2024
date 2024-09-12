@@ -1,9 +1,8 @@
-package utn.frc.isi.is.g2.istp6back.Domicile.Controllers.DTO;
+package utn.frc.isi.is.g2.istp6back.Address.Controllers.DTO;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import utn.frc.isi.is.g2.istp6back.Domicile.Entities.Location;
 
 @Builder
 @Data

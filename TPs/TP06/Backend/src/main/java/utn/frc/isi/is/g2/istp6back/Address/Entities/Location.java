@@ -1,4 +1,4 @@
-package utn.frc.isi.is.g2.istp6back.Domicile.Entities;
+package utn.frc.isi.is.g2.istp6back.Address.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -23,7 +23,7 @@ public class Location {
     @Column(nullable = false)
     String name;
 
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     @ManyToOne
     @OnDelete(action = OnDeleteAction.CASCADE)
     Province province;

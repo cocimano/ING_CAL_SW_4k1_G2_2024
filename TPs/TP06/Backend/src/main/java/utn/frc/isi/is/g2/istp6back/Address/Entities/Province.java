@@ -1,11 +1,8 @@
-package utn.frc.isi.is.g2.istp6back.Domicile.Entities;
+package utn.frc.isi.is.g2.istp6back.Address.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.hibernate.annotations.Cascade;
-
-import java.util.List;
 
 @Entity
 @Table(name = "Provinces")

@@ -5,12 +5,10 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import utn.frc.isi.is.g2.istp6back.Domicile.Entities.Address;
-import utn.frc.isi.is.g2.istp6back.Domicile.Entities.Location;
+import utn.frc.isi.is.g2.istp6back.Address.Entities.Address;
 import utn.frc.isi.is.g2.istp6back.Enums.LoadTypes;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name = "ShippingOrders")

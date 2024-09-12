@@ -7,12 +7,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import utn.frc.isi.is.g2.istp6back.Domicile.Controllers.DTO.AddressRequest;
-import utn.frc.isi.is.g2.istp6back.Domicile.Entities.Address;
+import utn.frc.isi.is.g2.istp6back.Address.Controllers.DTO.AddressRequest;
 import utn.frc.isi.is.g2.istp6back.Enums.LoadTypes;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Data
 @NoArgsConstructor

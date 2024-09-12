@@ -1,4 +1,4 @@
-package utn.frc.isi.is.g2.istp6back.Domicile.Controllers;
+package utn.frc.isi.is.g2.istp6back.Address.Controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
@@ -8,10 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import utn.frc.isi.is.g2.istp6back.Domicile.Controllers.DTO.ProvinceResponse;
-import utn.frc.isi.is.g2.istp6back.Domicile.Controllers.Mappers.ProvinceToProvinceResponse;
-import utn.frc.isi.is.g2.istp6back.Domicile.Entities.Province;
-import utn.frc.isi.is.g2.istp6back.Domicile.Services.ProvinceService;
+import utn.frc.isi.is.g2.istp6back.Address.Controllers.DTO.ProvinceResponse;
+import utn.frc.isi.is.g2.istp6back.Address.Controllers.Mappers.ProvinceToProvinceResponse;
+import utn.frc.isi.is.g2.istp6back.Address.Entities.Province;
+import utn.frc.isi.is.g2.istp6back.Address.Services.ProvinceService;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package utn.frc.isi.is.g2.istp6back.Domicile.Entities;
+package utn.frc.isi.is.g2.istp6back.Address.Entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,7 +27,7 @@ public class Address {
 
     String reference;
 
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     @ManyToOne
     @OnDelete(action = OnDeleteAction.SET_NULL)
     Location location;

@@ -1,10 +1,12 @@
-package utn.frc.isi.is.g2.istp6back.Domicile.Controllers.Mappers;
+package utn.frc.isi.is.g2.istp6back.Address.Controllers.Mappers;
 
-import utn.frc.isi.is.g2.istp6back.Domicile.Controllers.DTO.ProvinceResponse;
-import utn.frc.isi.is.g2.istp6back.Domicile.Entities.Province;
+import org.springframework.stereotype.Component;
+import utn.frc.isi.is.g2.istp6back.Address.Controllers.DTO.ProvinceResponse;
+import utn.frc.isi.is.g2.istp6back.Address.Entities.Province;
 
 import java.util.function.Function;
 
+@Component
 public class ProvinceToProvinceResponse implements Function<Province, ProvinceResponse> {
 
     @Override
