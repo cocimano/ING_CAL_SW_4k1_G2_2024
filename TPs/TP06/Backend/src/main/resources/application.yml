@@ -1,0 +1,40 @@
+server:
+    port: 4000
+
+spring:
+    application:
+        name: IS-TP6-Back
+
+    datasource:
+        url: jdbc:postgresql://dpg-crh2e9tsvqrc73878190-a.oregon-postgres.render.com/tango_app_db
+        username: admin
+        password: gvvVgmn8xqIQQgsIvi40z5UJoGEM9Pew
+
+    jpa:
+        hibernate:
+            naming:
+                # StandardImpl is used in order to not transform the attributes and tables from CamelCase to snake_case
+                physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+            ddl-auto: update
+        properties:
+            hibernate:
+                show_sql: true
+
+    mail:
+        host: smtp.gmail.com
+        port: 465
+        username: noreply.tangoapp@gmail.com
+        password: tangoapp
+        properties:
+            mail:
+                smtp:
+                    auth: true
+                    ssl:
+                        enable: true
+                    starttls:
+                        enable: true
+                        required: true
+
+
+frontend:
+    base-url: http://localhost:5173
