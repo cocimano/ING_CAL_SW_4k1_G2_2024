@@ -24,7 +24,7 @@ spring:
         host: smtp.gmail.com
         port: 465
         username: noreply.tangoapp@gmail.com
-        password: tangoapp
+        password: ${MAIL_PASSWORD}
         properties:
             mail:
                 smtp:
