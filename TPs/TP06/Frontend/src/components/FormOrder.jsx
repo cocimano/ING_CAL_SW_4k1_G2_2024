@@ -119,6 +119,7 @@ export default function FormOrder() {
                         selected={dateCatch}
                         onChange={handleChangeDateCatch}
                         dateFormat="dd/MM/yyyy"
+                        minDate={new Date()}  
                     />
                 </div>
 
@@ -132,6 +133,7 @@ export default function FormOrder() {
                         selected={dateDeliver}
                         onChange={handleChangeDateDeliver}
                         dateFormat="dd/MM/yyyy"
+                        minDate={dateCatch}
                     />
                 </div>
 
