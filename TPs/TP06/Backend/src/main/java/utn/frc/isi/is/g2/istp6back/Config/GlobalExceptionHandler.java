@@ -1,4 +1,4 @@
-package utn.frc.isi.is.g2.istp6back.Exception;
+package utn.frc.isi.is.g2.istp6back.Config;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
