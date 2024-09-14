@@ -45,10 +45,9 @@ public class ShippingOrderService {
                 .build();
 
         // Send email
-        emailService.sendEmailWithTemplate(
-                "mceballoscolombo@gmail.com",
-                "Nuevo Pedido de Envío",
-                "NewShippingOrder"
+        emailService.sendNewShippingOrderEmail(
+                "Test 1",
+                "Test 2"
         );
 
         return shippingOrderRepository.save(newShippingOrder);

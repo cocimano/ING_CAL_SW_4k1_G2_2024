@@ -32,6 +32,4 @@ public class ShippingOrderRequest {
     @Schema(example = "2024-11-01")
     LocalDate deliveryDate;
 
-    // TODO: pictures
-
 }

@@ -23,16 +23,15 @@ public class EmailService {
     JavaMailSender javaMailSender;
 
     @Async
-    public void sendEmailWithTemplate(String to, String subject, String templateFileName) {
-        CompletableFuture.supplyAsync(() -> {
-            try {
-                String template = loadHtmlTemplate(templateFileName);
-                sendHtmlEmail(to, subject, template);
-                return null;
-            } catch (IOException | MessagingException e) {
-                throw new RuntimeException(e);
-            }
-        });
+    public void sendNewShippingOrderEmail(String var1, String var2)
+            throws IOException, MessagingException {
+        String template = loadHtmlTemplate("NewShippingOrder");
+
+        template = template.replace("{{VARIABLE1}}", var1);
+        template = template.replace("{{VARIABLE2}}", var2);
+
+        // TODO: to
+        sendHtmlEmail("mceballoscolombo@gmail.com", "Nuevo Pedido de Envío", template);
     }
 
     public void sendHtmlEmail(String to, String subject, String body) throws MessagingException {
