@@ -9,15 +9,20 @@ spring:
     main:
         banner-mode: "off"
 
+    jmx:
+        enabled: false
+
     application:
         name: IS-TP6-Back
 
     datasource:
         url: jdbc:postgresql://dpg-crh2e9tsvqrc73878190-a.oregon-postgres.render.com/tango_app_db
         username: admin
-        password: gvvVgmn8xqIQQgsIvi40z5UJoGEM9Pew
+        password: test
 
     jpa:
+        open-in-view: false
+
         hibernate:
             naming:
                 # StandardImpl is used in order to not transform the attributes and tables from CamelCase to snake_case
