@@ -1,4 +1,3 @@
-
 INSERT INTO provinces (id, name) VALUES
    (1, 'Buenos Aires'),
    (2, 'Buenos Aires-GBA'),
@@ -2410,3 +2409,9 @@ INSERT INTO locations (id, province_id, name) VALUES
     (2380, 25, 'Yánima'),
     (2381, 25, 'Yerba Buena'),
     (2382, 25, 'Yerba Buena (S)');
+
+
+ALTER SEQUENCE province_seq
+    RESTART 26;
+ALTER SEQUENCE location_seq
+    RESTART 2383;

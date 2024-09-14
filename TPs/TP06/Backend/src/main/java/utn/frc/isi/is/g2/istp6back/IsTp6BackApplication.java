@@ -5,6 +5,7 @@ import jakarta.annotation.Resource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.Environment;
+import utn.frc.isi.is.g2.istp6back.Logging.ConsoleColor;
 
 @SpringBootApplication
 public class IsTp6BackApplication {
@@ -22,8 +23,10 @@ public class IsTp6BackApplication {
         String swaggerPath = "/swagger-ui/index.html";
         String newLines = "\n".repeat(3);
 
-        System.out.printf("%sLocal url: http://localhost:%s%s\n%s",
-                newLines, env.getProperty("server.port"), swaggerPath, newLines);
+        System.out.printf("%s%sLocal url: http://localhost:%s%s\n%s%s",
+                ConsoleColor.WHITE_BOLD_BRIGHT,
+                newLines, env.getProperty("server.port"), swaggerPath, newLines,
+                ConsoleColor.RESET);
     }
 
 }

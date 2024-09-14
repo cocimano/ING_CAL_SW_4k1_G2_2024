@@ -16,8 +16,8 @@ import org.hibernate.annotations.OnDeleteAction;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "domicile_generator")
-    @SequenceGenerator(name = "domicile_generator", sequenceName = "domicile_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_generator")
+    @SequenceGenerator(name = "address_generator", sequenceName = "address_seq", allocationSize = 1)
     long id;
 
     @Column(nullable = false)

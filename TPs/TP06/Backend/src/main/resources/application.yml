@@ -47,6 +47,10 @@ spring:
                         enable: true
                         required: true
 
+# TODO: firebase
+firebase-storage:
+    base-url: TODO
+    storage-bucket-url: TODO
 
 frontend:
     base-url: http://localhost:5173

@@ -20,8 +20,8 @@ import java.time.LocalDate;
 public class ShippingOrder {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "location_generator")
-    @SequenceGenerator(name = "location_generator", sequenceName = "location_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "shippingOrder_generator")
+    @SequenceGenerator(name = "shippingOrder_generator", sequenceName = "shippingOrder_seq", allocationSize = 1)
     long id;
 
     @Enumerated(EnumType.STRING)

@@ -1,11 +1,9 @@
 HELP.md
 
-# Ignorar directorios target en cualquier nivel
 **/target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-# Se mantiene por si acaso el archivo .gitignore de la subcarpeta sigue siendo necesario
 /target/
 
 ### STS ###
@@ -36,3 +34,7 @@ HELP.md
 ### VS Code ###
 **/.vscode/
 **/.vs/
+
+
+### Sensible information ###
+serviceAccountKey.json
