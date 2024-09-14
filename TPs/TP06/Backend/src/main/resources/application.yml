@@ -36,6 +36,7 @@ spring:
         host: smtp.gmail.com
         port: 465
         username: noreply.tangoapp@gmail.com
+        # As it's a gmail, it uses App Passwords, which can be found searching for App Passwords in Google Account
         password: ${MAIL_PASSWORD}
         properties:
             mail:

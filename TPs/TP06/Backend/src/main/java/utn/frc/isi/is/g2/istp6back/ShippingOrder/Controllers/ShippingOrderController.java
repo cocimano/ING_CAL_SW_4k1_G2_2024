@@ -1,6 +1,7 @@
 package utn.frc.isi.is.g2.istp6back.ShippingOrder.Controllers;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.mail.MessagingException;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -13,6 +14,7 @@ import utn.frc.isi.is.g2.istp6back.ShippingOrder.Controllers.Mappers.ShippingOrd
 import utn.frc.isi.is.g2.istp6back.ShippingOrder.Entities.ShippingOrder;
 import utn.frc.isi.is.g2.istp6back.ShippingOrder.Services.ShippingOrderService;
 
+import java.io.IOException;
 import java.util.List;
 
 @Tag(name = "Shipping Order")
@@ -36,7 +38,7 @@ public class ShippingOrderController {
     }
 
     @PostMapping
-    public ResponseEntity<ShippingOrderResponse> save(@RequestBody ShippingOrderRequest newShippingOrderRequest) {
+    public ResponseEntity<ShippingOrderResponse> save(@RequestBody ShippingOrderRequest newShippingOrderRequest) throws MessagingException, IOException {
         ShippingOrder newShippingOrder = shippingOrderService.save(newShippingOrderRequest);
         ShippingOrderResponse shippingOrderResponse = shippingOrderToShippingOrderResponse.apply(newShippingOrder);
 
