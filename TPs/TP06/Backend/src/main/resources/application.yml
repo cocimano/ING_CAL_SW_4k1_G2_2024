@@ -18,7 +18,7 @@ spring:
     datasource:
         url: jdbc:postgresql://dpg-crh2e9tsvqrc73878190-a.oregon-postgres.render.com/tango_app_db
         username: admin
-        password: test
+        password: ${RENDER_DB_PASSWORD}
 
     jpa:
         open-in-view: false
