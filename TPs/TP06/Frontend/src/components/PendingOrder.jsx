@@ -1,28 +1,28 @@
-import React from 'react';
-import OrderCard from './OrderCard'; // Ajusta la ruta según la ubicación real de tu archivo OrderCard
-
-const sampleOrder = {
-    tipoCarga: 'Grano',
-    domicilioRetiro: {
-        calleNumero: '123 Calle Principal',
-        localidad: 'Ciudad',
-        provincia: 'Provincia',
-        referencia: 'Cerca del parque'
-    },
-    fechaRetiro: '2024-09-20T10:00:00Z',
-    domicilioEntrega: {
-        calleNumero: '456 Avenida Secundaria',
-        localidad: 'Ciudad',
-        provincia: 'Provincia',
-        referencia: 'Al lado de la librería'
-    },
-    fechaEntrega: '2024-09-22T10:00:00Z',
-    fotos: [
-     
-    ]
-};
+import { useState, useEffect } from "react";
+import OrderCard from './OrderCard';
+import { useSnackbar } from "notistack";
+import { orderService } from '../services/orders.service';
 
 export default function PendingOrder() {
+    const [pendingOrders, setPendingOrders] = useState([])
+
+    const fetchPendingOrders = async () => {
+        try { 
+            const data = await orderService.getAll();
+            setPendingOrders(data);
+
+        } catch (error) {
+            enqueueSnackbar("Error al obtener los pedidos de envío", { variant: "error" });
+
+        }
+    }
+
+    useEffect(() => {
+        fetchPendingOrders();
+    }, []);
+
+
+
     return (
         <>
             <div className="mt-5">
@@ -33,7 +33,7 @@ export default function PendingOrder() {
             </div>
             <div className="mt-5">
                 {/* Renderiza la tarjeta de orden */}
-                <OrderCard order={sampleOrder} />
+                <OrderCard orders={pendingOrders} />
             </div>
         </>
     );
