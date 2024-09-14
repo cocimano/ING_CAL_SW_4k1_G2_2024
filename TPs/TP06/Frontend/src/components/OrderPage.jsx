@@ -3,10 +3,8 @@ import FormOrder from './FormOrder'
 
 export default function OrderPage() {
     const navigate = useNavigate();
-    const handleVolver = () => {
-        navigate(-1);
-
-    }
+    const handleVolver = () => {navigate(-1)}
+    
     return (
         <>
             <div className="min-h-screen bg-gray-100">
