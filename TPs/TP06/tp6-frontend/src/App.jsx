@@ -1,8 +1,8 @@
-import { Route, Routes, useNavigate, Navigate, BrowserRouter } from "react-router-dom";
+import { Route, Routes, Navigate, BrowserRouter } from "react-router-dom";
 import Home from './components/Home'
 import OrderPage from "./components/OrderPage";
 
-export function App() {
+export default function App() {
 
   return (
     <>
