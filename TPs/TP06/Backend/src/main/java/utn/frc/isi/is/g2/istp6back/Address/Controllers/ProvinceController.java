@@ -24,10 +24,12 @@ public class ProvinceController {
 
     ProvinceService provinceService;
 
+    ProvinceToProvinceResponse provinceToProvinceResponse;
+
     @GetMapping
     public ResponseEntity<List<ProvinceResponse>> findAll(){
         List<Province> provinces = this.provinceService.findAll();
-        List<ProvinceResponse> provincesResponses = provinces.stream().map(new ProvinceToProvinceResponse()).toList();
+        List<ProvinceResponse> provincesResponses = provinces.stream().map(provinceToProvinceResponse).toList();
 
         return ResponseEntity.ok(provincesResponses);
     }

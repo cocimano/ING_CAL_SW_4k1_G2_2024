@@ -1,4 +1,4 @@
-package utn.frc.isi.is.g2.istp6back.Enums;
+package utn.frc.isi.is.g2.istp6back.ShippingOrder.Enums;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
