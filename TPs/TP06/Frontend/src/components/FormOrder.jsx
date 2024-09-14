@@ -6,6 +6,15 @@ import { useSnackbar } from "notistack";
 import Swal from "sweetalert2";
 import { provinceService } from "../services/provinces.service";
 import { locationService } from "../services/locations.service";
+import { orderService } from "../services/orders.service";
+import { format } from 'date-fns';
+
+const OrderType = {
+    DOCUMENTACION: 'DOCUMENTACION',
+    PAQUETE: 'PAQUETE',
+    GRANOS: 'GRANOS',
+    HACIENDA: 'HACIENDA',
+};
 
 export default function FormOrder() {
     const { enqueueSnackbar } = useSnackbar();
@@ -16,13 +25,16 @@ export default function FormOrder() {
     const [provinces, setProvinces] = useState([]);
     const [selectedProvinceCatchId, setSelectedProvinceCatchId] = useState(null);
     const [locationsCatch, setLocationsCatch] = useState([]);
+    const [selectedLocationCatchId, setSelectedLocationCatchId] = useState(null);
     const [selectedProvinceDeliverId, setSelectedProvinceDeliverId] = useState(null);
     const [locationsDeliver, setLocationsDeliver] = useState([]);
+    const [selectedLocationDeliverId, setSelectedLocationDeliverId] = useState(null);
 
     const handleChangeDateCatch = (date) => {
         setDateCatch(date);
         setValue("dateCatch", date);
     };
+
     const handleChangeDateDeliver = (date) => {
         setDateDeliver(date);
         setValue("dateDeliver", date);
@@ -41,6 +53,8 @@ export default function FormOrder() {
         const selectedId = e.target.value;
         setSelectedProvinceCatchId(selectedId);
         setValue("provinceCatch", selectedId);
+        setSelectedLocationCatchId(null); 
+        setValue("locationCatch", ""); 
 
         try {
             const data = await locationService.getLocationsByProvince(selectedId);
@@ -50,10 +64,18 @@ export default function FormOrder() {
         }
     };
 
+    const handleLocationCatchChange = (e) => {
+        const selectedId = e.target.value;
+        setSelectedLocationCatchId(selectedId);
+        setValue("locationCatch", selectedId);
+    };
+
     const handleProvinceDeliverChange = async (e) => {
         const selectedId = e.target.value;
         setSelectedProvinceDeliverId(selectedId);
         setValue("provinceDeliver", selectedId);
+        setSelectedLocationDeliverId(null); 
+        setValue("locationDeliver", ""); 
 
         try {
             const data = await locationService.getLocationsByProvince(selectedId);
@@ -61,6 +83,12 @@ export default function FormOrder() {
         } catch (error) {
             enqueueSnackbar("Error al obtener las localidades de entrega", { variant: "error" });
         }
+    };
+
+    const handleLocationDeliverChange = (e) => {
+        const selectedId = e.target.value;
+        setSelectedLocationDeliverId(selectedId);
+        setValue("locationDeliver", selectedId);
     };
 
     useEffect(() => {
@@ -82,8 +110,24 @@ export default function FormOrder() {
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     try {
-                        console.log(data);
-                        // Add logic to handle form submission
+                        const formattedDateCatch = format(dateCatch, 'yyyy-MM-dd');
+                        const formattedDateDeliver = format(dateDeliver, 'yyyy-MM-dd');
+                        const type = OrderType[data.type];
+    
+                        const res = await orderService.register(
+                            type,
+                            data.streetCatch,
+                            data.numberCatch,
+                            data.referenceCatch,
+                            selectedLocationCatchId,
+                            formattedDateCatch,
+                            data.streetDeliver,
+                            data.numberDeliver,
+                            data.referenceDeliver,
+                            selectedLocationDeliverId,
+                            formattedDateDeliver
+                        );
+                        console.log("Registrado correctamente:", res.data);
                     } catch (error) {
                         console.error("Error al enviar el formulario", error);
                     }
@@ -93,6 +137,7 @@ export default function FormOrder() {
             console.error("Error al procesar el envío", error);
         }
     };
+    
 
     return (
         <>
@@ -101,11 +146,16 @@ export default function FormOrder() {
                     <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-900">
                         Tipo de carga
                     </label>
-                    <select id="type" {...register("type")} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        <option value="documentacion">Documentación</option>
-                        <option value="paquete">Paquete</option>
-                        <option value="granos">Granos</option>
-                        <option value="hacienda">Hacienda</option>
+                    <select
+                        id="type"
+                        {...register("type")}
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    >
+                        {Object.keys(OrderType).map((key) => (
+                            <option key={key} value={key}>
+                                {OrderType[key]}
+                            </option>
+                        ))}
                     </select>
                 </div>
 
@@ -119,7 +169,7 @@ export default function FormOrder() {
                         selected={dateCatch}
                         onChange={handleChangeDateCatch}
                         dateFormat="dd/MM/yyyy"
-                        minDate={new Date()}  
+                        minDate={new Date()}
                     />
                 </div>
 
@@ -161,14 +211,15 @@ export default function FormOrder() {
                     </div>
 
                     <div className="mt-5">
-                        <label htmlFor="localitiesCatch" className="block mb-2 text-sm font-medium text-gray-900">
+                        <label htmlFor="locationCatch" className="block mb-2 text-sm font-medium text-gray-900">
                             Localidad
                         </label>
                         <select
-                            id="localitiesCatch"
-                            {...register("localitiesCatch")}
+                            id="locationCatch"
+                            {...register("locationCatch")}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             disabled={!selectedProvinceCatchId}
+                            onChange={handleLocationCatchChange}
                         >
                             <option value="">Seleccione una localidad</option>
                             {locationsCatch.map((location) => (
@@ -239,14 +290,15 @@ export default function FormOrder() {
                     </div>
 
                     <div className="mt-5">
-                        <label htmlFor="localitiesDeliver" className="block mb-2 text-sm font-medium text-gray-900">
+                        <label htmlFor="locationDeliver" className="block mb-2 text-sm font-medium text-gray-900">
                             Localidad
                         </label>
                         <select
-                            id="localitiesDeliver"
-                            {...register("localitiesDeliver")}
+                            id="locationDeliver"
+                            {...register("locationDeliver")}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             disabled={!selectedProvinceDeliverId}
+                            onChange={handleLocationDeliverChange}
                         >
                             <option value="">Seleccione una localidad</option>
                             {locationsDeliver.map((location) => (
