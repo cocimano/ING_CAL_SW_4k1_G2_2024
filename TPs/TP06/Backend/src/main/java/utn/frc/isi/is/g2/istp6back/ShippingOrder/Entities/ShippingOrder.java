@@ -6,9 +6,11 @@ import lombok.experimental.FieldDefaults;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import utn.frc.isi.is.g2.istp6back.Address.Entities.Address;
+import utn.frc.isi.is.g2.istp6back.FirebaseStorage.Entities.ShippingOrderImage;
 import utn.frc.isi.is.g2.istp6back.ShippingOrder.Enums.LoadTypes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "ShippingOrders")
@@ -39,6 +41,7 @@ public class ShippingOrder {
 
     LocalDate deliveryDate;
 
-    // TODO: pictures
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "shippingOrder")
+    List<ShippingOrderImage> shippingOrderImages;
 
 }

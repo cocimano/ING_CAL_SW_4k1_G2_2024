@@ -9,8 +9,8 @@ spring:
     main:
         banner-mode: "off"
 
-    jmx:
-        enabled: false
+#    jmx:
+#        enabled: false
 
     application:
         name: IS-TP6-Back
@@ -47,10 +47,10 @@ spring:
                         enable: true
                         required: true
 
-# TODO: firebase
+# Project specific configurations
 firebase-storage:
-    base-url: TODO
-    storage-bucket-url: TODO
+    base-url: https://firebasestorage.googleapis.com/v0/b/is-tp6-firebase-storage.appspot.com/o/
+    storage-bucket-url: is-tp6-firebase-storage.appspot.com
 
 frontend:
     base-url: http://localhost:5173

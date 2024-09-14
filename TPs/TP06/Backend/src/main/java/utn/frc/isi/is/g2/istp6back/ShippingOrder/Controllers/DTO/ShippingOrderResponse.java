@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import utn.frc.isi.is.g2.istp6back.Address.Controllers.DTO.AddressRequest;
 import utn.frc.isi.is.g2.istp6back.Address.Controllers.DTO.AddressResponse;
+import utn.frc.isi.is.g2.istp6back.FirebaseStorage.Controllers.DTO.ShippingOrderImageResponse;
 import utn.frc.isi.is.g2.istp6back.ShippingOrder.Enums.LoadTypes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Builder
 @Data
@@ -33,6 +34,6 @@ public class ShippingOrderResponse {
     @Schema(example = "2024-11-01")
     LocalDate deliveryDate;
 
-    // TODO: pictures
+    List<ShippingOrderImageResponse> shippingOrderImages;
 
 }
