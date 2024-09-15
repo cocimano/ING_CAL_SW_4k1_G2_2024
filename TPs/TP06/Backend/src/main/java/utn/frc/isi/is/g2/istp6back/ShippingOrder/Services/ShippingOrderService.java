@@ -47,7 +47,9 @@ public class ShippingOrderService {
         // Send email
         emailService.sendNewShippingOrderEmail(
                 "Test 1",
-                "Test 2"
+                "Test 2",
+                pickUpAddress.getLocation().getId(),
+                deliveryAddres.getLocation().getId()
         );
 
         return shippingOrderRepository.save(newShippingOrder);
