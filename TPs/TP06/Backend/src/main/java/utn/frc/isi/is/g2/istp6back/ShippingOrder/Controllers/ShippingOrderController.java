@@ -46,6 +46,24 @@ public class ShippingOrderController {
         return ResponseEntity.ok(shippingOrderResponses);
     }
 
+    @GetMapping("/taken")
+    public ResponseEntity<List<ShippingOrderResponse>> findAllTaken() {
+        List<ShippingOrder> shippingOrders = shippingOrderService.findAllTaken();
+        List<ShippingOrderResponse> shippingOrderResponses =
+                shippingOrders.stream().map(shippingOrderToShippingOrderResponse).toList();
+
+        return ResponseEntity.ok(shippingOrderResponses);
+    }
+
+    @GetMapping("/delivered")
+    public ResponseEntity<List<ShippingOrderResponse>> findAllDelivered() {
+        List<ShippingOrder> shippingOrders = shippingOrderService.findAllDelivered();
+        List<ShippingOrderResponse> shippingOrderResponses =
+                shippingOrders.stream().map(shippingOrderToShippingOrderResponse).toList();
+
+        return ResponseEntity.ok(shippingOrderResponses);
+    }
+
     @PostMapping
     public ResponseEntity<ShippingOrderResponse> save(@RequestBody ShippingOrderRequest newShippingOrderRequest) throws MessagingException, IOException {
         ShippingOrder newShippingOrder = shippingOrderService.save(newShippingOrderRequest);

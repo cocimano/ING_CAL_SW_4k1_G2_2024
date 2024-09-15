@@ -36,6 +36,14 @@ public class ShippingOrderService {
         return shippingOrderRepository.findShippingOrderByState(ShippingOrderStates.PENDING);
     }
 
+    public List<ShippingOrder> findAllTaken() {
+        return shippingOrderRepository.findShippingOrderByState(ShippingOrderStates.TAKEN);
+    }
+
+    public List<ShippingOrder> findAllDelivered() {
+        return shippingOrderRepository.findShippingOrderByState(ShippingOrderStates.DELIVERED);
+    }
+
     @Transactional
     public ShippingOrder save(ShippingOrderRequest newShippingOrderRequest) throws MessagingException, IOException {
         Address pickUpAddress = addressService.save(newShippingOrderRequest.getPickUpAddress());
