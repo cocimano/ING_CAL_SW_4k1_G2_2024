@@ -1,7 +1,6 @@
 import axios from "axios";
 
-
-async function getLocationsByProvince(provinceId){
+async function getLocationsByProvince(provinceId) {
     const params = {
         provinceId: provinceId,
     };
@@ -10,8 +9,6 @@ async function getLocationsByProvince(provinceId){
     });
     return res.data
 }
-
-
 
 export const locationService = {
     getLocationsByProvince

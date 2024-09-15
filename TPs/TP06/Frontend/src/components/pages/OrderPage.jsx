@@ -17,7 +17,7 @@ export default function OrderPage() {
                     </button>
                 </div>
                 <div className="mt-5">
-                    <h2 className=" text-gray-700 text-2xl font-bold text-center mb-2">
+                    <h2 className="text-gray-700 text-2xl font-bold text-center mb-2">
                         PUBLICAR ENVÍO DE PEDIDO
                     </h2>
                     <hr className="border-1 border-gray-700" />

@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { orderService } from "../../services/orders.service";
+import Swal from "sweetalert2";
 
 export default function ImageUploader() {
 
   const [selectedImage, setSelectedImage] = useState(null);
   const navigate = useNavigate();
-  const handleVolver = () => {navigate(-1)}
 
   const {
     register,
@@ -15,11 +16,24 @@ export default function ImageUploader() {
     reset
   } = useForm();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data, isNavigate = true) => {
     try {
-      const id = window.location.hash.split("/").pop();
+      const id = window.location.pathname.split("/").pop();
       const file = data.file[0];
-      //const res = await hotelService.imageUpload(id, file);
+      const res = await orderService.imageUpload(id, file);
+      if (isNavigate) {
+        navigate('/');
+        setTimeout(() => {
+          Swal.fire({
+              title: 'Pedido publicado correctamente. Se notificó a los transportistas de la zona.',
+              customClass: {
+                  container: 'bg-gray-100',
+                  title: 'text-gray-700',
+                  confirmButton: 'bg-[#F7BE38] hover:bg-[#F7BE38]/90 text-gray-700 hover:outline-offset-2 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-md inline-flex items-center mb-2 mt-5'
+              }
+          });
+        }, 300);
+      }
 
       reset();
     } catch (error) {
@@ -46,18 +60,16 @@ export default function ImageUploader() {
   };
 
   return (
-    <>
-      <div>
-        <button type="button" 
-            className="m-2 focus:outline-none text-gray-700 bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-bold rounded-lg text-sm px-5 py-2.5 me-2 mb-2" 
-            onClick={handleVolver}
-        >
-            Volver
-        </button>
+    
+<>
+      <div className="mt-5">
+        <h2 className="text-gray-700 text-2xl font-bold text-center mb-2">
+            ¿DESEA AGREGAR IMÁGENES A SU PEDIDO?
+        </h2>
+        <hr className="border-1 border-gray-700" />
       </div>
 
-      <form className="m-4" onSubmit={handleSubmit(onSubmit)}>
-
+      <form className="m-4 " onSubmit={handleSubmit(onSubmit)}>
         <p className="font-medium mb-2">
           Imágenes (opcional)
         </p>

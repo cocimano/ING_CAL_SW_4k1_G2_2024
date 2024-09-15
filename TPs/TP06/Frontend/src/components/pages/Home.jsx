@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
     
     const navigate = useNavigate();
-    const handleFormOrder = () => {navigate('/publicacionenvio')}
+    const handleFormOrder = () => {navigate('/orderpage')}
     return (
         <>
-            <div className="min-h-screen bg-gray-100">
+            <div className="min-h-screen bg-gray-100 mb-[94px]">
                 <div className='flex justify-center'>
                     <button
                         type="button"

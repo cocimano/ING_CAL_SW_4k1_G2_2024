@@ -10,8 +10,8 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/publicacionenvio" element={<OrderPage />} />
-          <Route path="/imageUploader" element={<ImageUploader />} />
+          <Route path="/orderpage" element={<OrderPage />} />
+          <Route path="/imageUploader/:id" element={<ImageUploader />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>

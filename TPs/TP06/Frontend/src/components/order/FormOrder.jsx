@@ -10,7 +10,6 @@ import { orderService } from "../../services/orders.service";
 import { format } from 'date-fns';
 import { useNavigate } from "react-router-dom";
 
-
 const OrderType = {
     DOCUMENTACION: 'DOCUMENTACION',
     PAQUETE: 'PAQUETE',
@@ -20,7 +19,7 @@ const OrderType = {
 
 export default function FormOrder() {
     const { enqueueSnackbar } = useSnackbar();
-    const { register, handleSubmit, setValue, watch, formState: { errors, isSubmitting } } = useForm();
+    const { register, handleSubmit, setValue, formState: { isSubmitting } } = useForm();
 
     const [dateCatch, setDateCatch] = useState(new Date());
     const [dateDeliver, setDateDeliver] = useState(new Date());
@@ -130,18 +129,12 @@ export default function FormOrder() {
                             selectedLocationDeliverId,
                             formattedDateDeliver
                         );
+
+                        {/* Get id for image POST */}
+                        const id = res.data.id;
+                        navigate(`imageUploader/${id}`);
+
                         console.log("Registrado correctamente:", res.data);
-                        setTimeout(() => {
-                            Swal.fire({
-                                title: 'Pedido publicado correctamente. Se notificó a los transportistas de la zona.',
-                                customClass: {
-                                    container: 'bg-gray-100', 
-                                    title: 'text-gray-700', 
-                                    confirmButton: 'bg-[#F7BE38] hover:bg-[#F7BE38]/90 text-gray-700 hover:outline-offset-2 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-md inline-flex items-center mb-2 mt-5'
-                                }
-                            });
-                            navigate(-1);
-                        }, 500);
 
                     } catch (error) {
                         console.error("Error al enviar el formulario", error);
