@@ -2,6 +2,7 @@ import { useState } from "react";
 
 export default function OrderCard({ orders }) {
     const [openModal, setOpenModal] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     const handleOpenModal = (index) => {
         setOpenModal(index);
@@ -9,6 +10,11 @@ export default function OrderCard({ orders }) {
 
     const handleCloseModal = () => {
         setOpenModal(null);
+        setSelectedImage(null);
+    };
+
+    const handleImageClick = (image) => {
+        setSelectedImage(image);
     };
 
     return (
@@ -54,9 +60,10 @@ export default function OrderCard({ orders }) {
                                         order.shippingOrderImages.map((image, imgIndex) => (
                                             <img
                                                 key={imgIndex}
-                                                src={image.url}  
+                                                src={image.url}
                                                 alt={`Orden ${index} Imagen ${imgIndex}`}
-                                                className="w-10 h-auto rounded-lg mx-auto"
+                                                className="w-10 h-auto rounded-lg mx-auto cursor-pointer"
+                                                onClick={() => handleImageClick(image.url)} 
                                             />
                                         ))
                                     ) : (
@@ -70,6 +77,27 @@ export default function OrderCard({ orders }) {
                                         className="px-4 py-2 text-white bg-red-500 hover:bg-red-700 rounded"
                                     >
                                         Cerrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Modal SelectedImage*/}
+                    {selectedImage && (
+                        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75 z-50">
+                            <div className="bg-white p-4 rounded-lg max-w-2xl w-full mx-4">
+                                <img
+                                    src={selectedImage}
+                                    alt="Imagen ampliada"
+                                    className="w-full h-auto rounded-lg"
+                                />
+                                <div className="flex justify-center mt-4">
+                                    <button
+                                        onClick={() => setSelectedImage(null)}
+                                        className="px-4 py-2 text-white bg-red-500 hover:bg-red-700 rounded"
+                                    >
+                                        Cerrar imagen
                                     </button>
                                 </div>
                             </div>
