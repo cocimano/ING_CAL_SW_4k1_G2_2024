@@ -131,7 +131,17 @@ export default function FormOrder() {
                             formattedDateDeliver
                         );
                         console.log("Registrado correctamente:", res.data);
-                        navigate(-1);
+                        setTimeout(() => {
+                            Swal.fire({
+                                title: 'Pedido publicado correctamente. Se notificó a los transportistas de la zona.',
+                                customClass: {
+                                    container: 'bg-gray-100', 
+                                    title: 'text-gray-700', 
+                                    confirmButton: 'bg-[#F7BE38] hover:bg-[#F7BE38]/90 text-gray-700 hover:outline-offset-2 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-md inline-flex items-center mb-2 mt-5'
+                                }
+                            });
+                            navigate(-1);
+                        }, 500);
 
                     } catch (error) {
                         console.error("Error al enviar el formulario", error);
