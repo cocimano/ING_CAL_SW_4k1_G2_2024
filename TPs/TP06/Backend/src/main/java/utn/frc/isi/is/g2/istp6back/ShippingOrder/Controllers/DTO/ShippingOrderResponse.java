@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import utn.frc.isi.is.g2.istp6back.Address.Controllers.DTO.AddressResponse;
 import utn.frc.isi.is.g2.istp6back.FirebaseStorage.Controllers.DTO.ShippingOrderImageResponse;
 import utn.frc.isi.is.g2.istp6back.ShippingOrder.Enums.LoadTypes;
+import utn.frc.isi.is.g2.istp6back.ShippingOrder.Enums.ShippingOrderStates;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -35,5 +36,7 @@ public class ShippingOrderResponse {
     LocalDate deliveryDate;
 
     List<ShippingOrderImageResponse> shippingOrderImages;
+
+    ShippingOrderStates state;
 
 }

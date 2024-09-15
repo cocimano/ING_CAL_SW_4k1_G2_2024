@@ -11,6 +11,7 @@ import utn.frc.isi.is.g2.istp6back.Address.Services.AddressService;
 import utn.frc.isi.is.g2.istp6back.Email.Services.EmailService;
 import utn.frc.isi.is.g2.istp6back.ShippingOrder.Controllers.DTO.ShippingOrderRequest;
 import utn.frc.isi.is.g2.istp6back.ShippingOrder.Entities.ShippingOrder;
+import utn.frc.isi.is.g2.istp6back.ShippingOrder.Enums.ShippingOrderStates;
 import utn.frc.isi.is.g2.istp6back.ShippingOrder.Repositories.ShippingOrderRepository;
 
 import java.io.IOException;
@@ -31,6 +32,10 @@ public class ShippingOrderService {
         return shippingOrderRepository.findAll();
     }
 
+    public List<ShippingOrder> findAllPending() {
+        return shippingOrderRepository.findShippingOrderByState(ShippingOrderStates.PENDING);
+    }
+
     @Transactional
     public ShippingOrder save(ShippingOrderRequest newShippingOrderRequest) throws MessagingException, IOException {
         Address pickUpAddress = addressService.save(newShippingOrderRequest.getPickUpAddress());
@@ -42,6 +47,7 @@ public class ShippingOrderService {
                 .pickUpDate(newShippingOrderRequest.getPickUpDate())
                 .deliveryAddress(deliveryAddres)
                 .deliveryDate(newShippingOrderRequest.getDeliveryDate())
+                .state(ShippingOrderStates.PENDING)
                 .build();
 
         // Send email

@@ -43,6 +43,7 @@ public class ShippingOrderToShippingOrderResponse implements Function<ShippingOr
                 .deliveryAddress(deliveryAddressResponse)
                 .deliveryDate(shippingOrder.getDeliveryDate())
                 .shippingOrderImages(shippingOrderImageResponses)
+                .state(shippingOrder.getState())
                 .build();
     }
 

@@ -30,7 +30,16 @@ public class ShippingOrderController {
 
     @GetMapping
     public ResponseEntity<List<ShippingOrderResponse>> findAll() {
-        List<ShippingOrder> shippingOrders = this.shippingOrderService.findAll();
+        List<ShippingOrder> shippingOrders = shippingOrderService.findAll();
+        List<ShippingOrderResponse> shippingOrderResponses =
+                shippingOrders.stream().map(shippingOrderToShippingOrderResponse).toList();
+
+        return ResponseEntity.ok(shippingOrderResponses);
+    }
+
+    @GetMapping("/pending")
+    public ResponseEntity<List<ShippingOrderResponse>> findAllPending() {
+        List<ShippingOrder> shippingOrders = shippingOrderService.findAllPending();
         List<ShippingOrderResponse> shippingOrderResponses =
                 shippingOrders.stream().map(shippingOrderToShippingOrderResponse).toList();
 

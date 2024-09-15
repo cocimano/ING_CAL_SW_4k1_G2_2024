@@ -8,6 +8,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import utn.frc.isi.is.g2.istp6back.Address.Entities.Address;
 import utn.frc.isi.is.g2.istp6back.FirebaseStorage.Entities.ShippingOrderImage;
 import utn.frc.isi.is.g2.istp6back.ShippingOrder.Enums.LoadTypes;
+import utn.frc.isi.is.g2.istp6back.ShippingOrder.Enums.ShippingOrderStates;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -43,5 +44,8 @@ public class ShippingOrder {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "shippingOrder")
     List<ShippingOrderImage> shippingOrderImages;
+
+    @Enumerated(EnumType.STRING)
+    ShippingOrderStates state;
 
 }
