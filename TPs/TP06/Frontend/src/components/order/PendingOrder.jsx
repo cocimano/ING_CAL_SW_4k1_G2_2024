@@ -10,7 +10,7 @@ export default function PendingOrder() {
 
     const fetchPendingOrders = async () => {
         try {
-            const data = await orderService.getAll();
+            const data = await orderService.getOrdersPending();
             setPendingOrders(data);
             setLoading(false);
 
