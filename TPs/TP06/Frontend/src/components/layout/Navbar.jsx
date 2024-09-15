@@ -1,4 +1,4 @@
-import fotoperfil from '../assets/fotoperfil-SuarezEmiliano.jpg'
+import fotoperfil from '../../assets/fotoperfil-SuarezEmiliano.jpg'
 
 export default function Navbar() {
     return (

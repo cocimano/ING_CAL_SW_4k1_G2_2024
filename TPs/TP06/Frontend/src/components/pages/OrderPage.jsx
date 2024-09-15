@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import FormOrder from './FormOrder'
+import FormOrder from '../order/FormOrder'
 
 export default function OrderPage() {
     const navigate = useNavigate();

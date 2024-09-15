@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import OrderCard from './OrderCard';
 import { useSnackbar } from "notistack";
-import { orderService } from '../services/orders.service';
+import { orderService } from '../../services/orders.service';
 
 export default function PendingOrder() {
     const [pendingOrders, setPendingOrders] = useState([])

@@ -1,7 +1,7 @@
-import DeliveredOrder from './DeliveredOrder'
-import PendingOrder from './PendingOrder'
-import Navbar from './Navbar'
-import fotobotonenvio from '../assets/botonenvio.png'
+import DeliveredOrder from '../order/DeliveredOrder'
+import PendingOrder from '../order/PendingOrder'
+import Navbar from '../layout/Navbar'
+import fotobotonenvio from '../../assets/botonenvio.png'
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {

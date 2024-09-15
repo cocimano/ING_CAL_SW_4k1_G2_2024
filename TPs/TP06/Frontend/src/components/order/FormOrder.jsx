@@ -4,10 +4,12 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useSnackbar } from "notistack";
 import Swal from "sweetalert2";
-import { provinceService } from "../services/provinces.service";
-import { locationService } from "../services/locations.service";
-import { orderService } from "../services/orders.service";
+import { provinceService } from "../../services/provinces.service";
+import { locationService } from "../../services/locations.service";
+import { orderService } from "../../services/orders.service";
 import { format } from 'date-fns';
+import { useNavigate } from "react-router-dom";
+
 
 const OrderType = {
     DOCUMENTACION: 'DOCUMENTACION',
@@ -29,6 +31,7 @@ export default function FormOrder() {
     const [selectedProvinceDeliverId, setSelectedProvinceDeliverId] = useState(null);
     const [locationsDeliver, setLocationsDeliver] = useState([]);
     const [selectedLocationDeliverId, setSelectedLocationDeliverId] = useState(null);
+    const navigate = useNavigate();
 
     const handleChangeDateCatch = (date) => {
         setDateCatch(date);
@@ -53,8 +56,8 @@ export default function FormOrder() {
         const selectedId = e.target.value;
         setSelectedProvinceCatchId(selectedId);
         setValue("provinceCatch", selectedId);
-        setSelectedLocationCatchId(null); 
-        setValue("locationCatch", ""); 
+        setSelectedLocationCatchId(null);
+        setValue("locationCatch", "");
 
         try {
             const data = await locationService.getLocationsByProvince(selectedId);
@@ -74,8 +77,8 @@ export default function FormOrder() {
         const selectedId = e.target.value;
         setSelectedProvinceDeliverId(selectedId);
         setValue("provinceDeliver", selectedId);
-        setSelectedLocationDeliverId(null); 
-        setValue("locationDeliver", ""); 
+        setSelectedLocationDeliverId(null);
+        setValue("locationDeliver", "");
 
         try {
             const data = await locationService.getLocationsByProvince(selectedId);
@@ -113,7 +116,7 @@ export default function FormOrder() {
                         const formattedDateCatch = format(dateCatch, 'yyyy-MM-dd');
                         const formattedDateDeliver = format(dateDeliver, 'yyyy-MM-dd');
                         const type = OrderType[data.type];
-    
+
                         const res = await orderService.register(
                             type,
                             data.streetCatch,
@@ -128,6 +131,8 @@ export default function FormOrder() {
                             formattedDateDeliver
                         );
                         console.log("Registrado correctamente:", res.data);
+                        navigate(-1);
+
                     } catch (error) {
                         console.error("Error al enviar el formulario", error);
                     }
@@ -137,7 +142,7 @@ export default function FormOrder() {
             console.error("Error al procesar el envío", error);
         }
     };
-    
+
 
     return (
         <>
