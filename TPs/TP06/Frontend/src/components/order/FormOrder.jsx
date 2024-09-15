@@ -354,12 +354,6 @@ export default function FormOrder() {
                     </div>
                 </div>
 
-                <div>
-                    <h2 className="mt-4 text-gray-900">Imágenes</h2>
-                    <hr className="border-1 border-gray-700 mt-2" />
-                    {/* ImageUpload */}
-                </div>
-
                 <div className="flex justify-center mt-5">
                     <button
                         type="submit"
