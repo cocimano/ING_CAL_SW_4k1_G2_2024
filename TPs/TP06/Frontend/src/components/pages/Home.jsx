@@ -5,9 +5,9 @@ import fotobotonenvio from '../../assets/botonenvio.png'
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
-    
+
     const navigate = useNavigate();
-    const handleFormOrder = () => {navigate('/orderpage')}
+    const handleFormOrder = () => { navigate('/orderpage') }
     return (
         <>
             <div className="min-h-screen bg-gray-100 mb-[94px]">
@@ -21,8 +21,10 @@ export default function Home() {
                         Publicar pedido de envío
                     </button>
                 </div>
-                <PendingOrder />
-                <DeliveredOrder />
+                <div className="flex flex-col items-center w-full mt-5 space-y-10">
+                    <PendingOrder />
+                    <DeliveredOrder />
+                </div>
             </div>
             <Navbar />
         </>
