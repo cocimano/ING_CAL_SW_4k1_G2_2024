@@ -9,6 +9,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import utn.frc.isi.is.g2.istp6back.Address.Entities.Location;
+import utn.frc.isi.is.g2.istp6back.ShippingOrder.Entities.ShippingOrder;
 import utn.frc.isi.is.g2.istp6back.User.Entities.User;
 import utn.frc.isi.is.g2.istp6back.User.Repositories.UserRepository;
 
@@ -29,20 +31,33 @@ public class EmailService {
     UserRepository userRepository;
 
     @Async
-    public void sendNewShippingOrderEmail(String var1, String var2, long pickUpLocationId, long deliveryLocationId)
+    public void sendNewShippingOrderEmail(ShippingOrder shippingOrder)
             throws IOException, MessagingException {
+        Location pickUpLocation = shippingOrder.getPickUpAddress().getLocation();
+        Location deliveryLocation = shippingOrder.getDeliveryAddress().getLocation();
+
         // Get template
         String template = loadHtmlTemplate("NewShippingOrder");
-        template = template.replace("{{VARIABLE1}}", var1);
-        template = template.replace("{{VARIABLE2}}", var2);
+        template = template.replace("{{TIPO_PEDIDO}}", shippingOrder.getLoadType().getId());
+        template = template.replace("{{FECHA_RETIRO}}", shippingOrder.getPickUpDate().toString());
+        template = template.replace("{{FECHA_ENTREGA}}", shippingOrder.getDeliveryDate().toString());
+        template = template.replace("{{LOCADLIDAD_RETIRO}}", pickUpLocation.getName());
+        template = template.replace("{{LOCADLIDAD_ENTREGA}}", deliveryLocation.getName());
 
         // Get users
-        List<Long> locationIds = Arrays.asList(pickUpLocationId, deliveryLocationId);
+        List<Long> locationIds = Arrays.asList(
+                pickUpLocation.getId(),
+                deliveryLocation.getId()
+        );
         List<User> users = userRepository.findUsersByCoverageAreaContainingLocations(locationIds);
         // Send mails
         for (int i = 0; i < users.size(); i++) {
-            String currentEmail = users.get(i).getEmail();
-            sendHtmlEmail(currentEmail, "Nuevo Pedido de Envío", template);
+            User currentUser = users.get(i);
+
+            String templateWithName = template.replace("{{NOMBRE_TRANSPORTISTA}}",
+                    String.format("%s %s", currentUser.getFirstname(), currentUser.getLastname()));
+
+            sendHtmlEmail(currentUser.getEmail(), "Nuevo Pedido de Envío", templateWithName);
         }
     }
 
