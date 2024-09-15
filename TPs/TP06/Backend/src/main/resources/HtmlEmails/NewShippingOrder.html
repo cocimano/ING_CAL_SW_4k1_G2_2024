@@ -1,10 +1,21 @@
-<div style='background-color: #f2f2f2; padding: 20px; text-align: center;'>
-<div style='background-color: #4f0220; color: white; padding: 10px;'>
-<h3 style='font-size: 30px;'>Tango App</h3>
-<p style='font-size: 14px;'>Nuevo Pedido de Envío</p>
-</div>
-<p>Recibes este correo electrónico porque ...</p>
-<p>Gracias.</p>
-<p>{{VARIABLE1}}</p>
-<p>{{VARIABLE2}}</p>
+<div style='border: 2px solid #333;'>
+    <div style='background-color: #F7BE38; padding: 20px; text-align: center; font-family: Arial, sans-serif;'>
+        <h3 style='font-size: 30px; color: #333;'>Tango App</h3>
+    </div>
+        <div style='background-color: white; padding: 20px; text-align: center; font-family: Arial, sans-serif;'>
+            <p style='font-size: 18px; color: #333; font-weight: bold;'>Nuevo Pedido Disponible</p>
+            <p style='font-size: 16px; color: #555;'>Hola {{NOMBRE_TRANSPORTISTA}}!</p>
+            <p style='font-size: 16px; color: #555;'>Tienes un nuevo pedido que se encuentra dentro de tu zona de cobertura.</p>
+            <p style='font-size: 16px; color: #555; font-weight: bold;'>Detalles del pedido:</p>
+            <ul style='font-size: 16px; color: #555;'>
+                <p><strong>Tipo:</strong> {{TIPO_PEDIDO}}</p>
+                <p><strong>Fecha de Retiro:</strong> {{FECHA_RETIRO}}</p>
+                <p><strong>Fecha de Entrega:</strong> {{FECHA_ENTREGA}}</p>
+            </ul>
+            <p style='font-size: 16px; color: #555;'>Recuerda revisar la aplicacion para confirmar y gestionar el pedido.</p>
+            <p style='font-size: 16px; color: #555;'>Gracias por tu confianza.</p>
+        </div>
+    <div style='background-color: #F7BE38; padding: 20px; text-align: center; font-family: Arial, sans-serif;'>
+        <p style='font-size: 14px; color: #333; font-weight: bold;'>Equipo de Tango App</p>
+    </div>
 </div>
