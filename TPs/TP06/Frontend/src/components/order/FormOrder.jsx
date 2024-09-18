@@ -22,7 +22,7 @@ export default function FormOrder() {
     const { register, handleSubmit, setValue, formState: { errors, touchedFields, isSubmitting } } = useForm();
 
     const [dateCatch, setDateCatch] = useState(new Date());
-    const [dateDeliver, setDateDeliver] = useState(new Date());
+    const [dateDeliver, setDateDeliver] = useState(null);
     const [provinces, setProvinces] = useState([]);
     const [selectedProvinceCatchId, setSelectedProvinceCatchId] = useState(null);
     const [locationsCatch, setLocationsCatch] = useState([]);
@@ -41,6 +41,9 @@ export default function FormOrder() {
         setDateDeliver(date);
         setValue("dateDeliver", date);
     };
+    useEffect(() => {
+        setDateDeliver(dateCatch); 
+    }, [dateCatch]);
 
     const fetchProvinces = async () => {
         try {

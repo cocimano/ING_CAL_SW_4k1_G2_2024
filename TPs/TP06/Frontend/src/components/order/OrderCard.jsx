@@ -62,7 +62,7 @@ export default function OrderCard({ orders }) {
                                                 key={imgIndex}
                                                 src={image.url}
                                                 alt={`Orden ${index} Imagen ${imgIndex}`}
-                                                className="w-10 h-auto rounded-lg mx-auto cursor-pointer"
+                                                className="w-[70px] h-auto rounded-lg mx-auto cursor-pointer"
                                                 onClick={() => handleImageClick(image.url)} 
                                             />
                                         ))
