@@ -12,29 +12,32 @@ export default function ImageUploader() {
   const {
     register,
     handleSubmit,
-    formState: { errors, touchedFields, isValid, isSubmitted, isDirty, isSubmitting },
+    formState: { isSubmitting },
     reset
   } = useForm();
 
   const onSubmit = async (data, isNavigate = true) => {
     try {
       const id = window.location.pathname.split("/").pop();
-      const file = data.file[0];
-      const res = await orderService.imageUpload(id, file);
+      const file = data.file && data.file[0];
+      if (file) {
+        const res = await orderService.imageUpload(id, file);
+      }
+      
       if (isNavigate) {
         navigate('/');
         setTimeout(() => {
           Swal.fire({
-              title: 'Pedido publicado correctamente. Se notificó a los transportistas de la zona.',
-              customClass: {
-                  container: 'bg-gray-100',
-                  title: 'text-gray-700',
-                  confirmButton: 'bg-[#F7BE38] hover:bg-[#F7BE38]/90 text-gray-700 hover:outline-offset-2 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-md inline-flex items-center mb-2 mt-5'
-              }
+            title: 'Pedido publicado correctamente. Se notificó a los transportistas de la zona.',
+            customClass: {
+              container: 'bg-gray-100',
+              title: 'text-gray-700',
+              confirmButton: 'bg-[#F7BE38] hover:bg-[#F7BE38]/90 text-gray-700 hover:outline-offset-2 focus:ring-4 focus:outline-none focus:ring-[#F7BE38]/50 font-bold rounded-lg text-md inline-flex items-center mb-2 mt-5'
+            }
           });
         }, 300);
       }
-
+  
       reset();
     } catch (error) {
       console.error(error);
@@ -60,8 +63,7 @@ export default function ImageUploader() {
   };
 
   return (
-    
-<>
+    <>
       <div className="mt-5">
         <h2 className="text-gray-700 text-2xl font-bold text-center mb-2">
             ¿DESEA AGREGAR IMÁGENES A SU PEDIDO?
@@ -112,10 +114,9 @@ export default function ImageUploader() {
             type="file"
             name="file"
             className="bg-gray-100 font-medium text-gray-900 text-sm rounded-lg focus:outline-none focus:ring-4 focus:ring-blue-300 w-full border-2 border-gray-300 border-dashed hover:border-gray-400 focus:border-blue-300 hover:bg-gray-200 mb-2"
-            {...register('file', { required: { value: true, message: 'Debes seleccionar una foto' } })}
+            {...register('file')}
             onChange={handleImageChange}
           />
-          {errors.file && touchedFields.file && <p className="text-red-500 text-sm">{errors.file.message}</p>}
         </div>
 
         <button
@@ -133,8 +134,6 @@ export default function ImageUploader() {
         >
           {isSubmitting ? 'CARGANDO...' : 'SIGUIENTE'}
         </button>
-
-        {isDirty && isSubmitted && !isValid && <p className="text-red-500 text-sm">Por favor, completa correctamente todos los campos.</p>}
       </form>
     </>
   )

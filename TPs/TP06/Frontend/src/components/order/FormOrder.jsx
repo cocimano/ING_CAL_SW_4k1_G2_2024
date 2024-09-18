@@ -19,7 +19,7 @@ const OrderType = {
 
 export default function FormOrder() {
     const { enqueueSnackbar } = useSnackbar();
-    const { register, handleSubmit, setValue, formState: { isSubmitting } } = useForm();
+    const { register, handleSubmit, setValue, formState: { errors, touchedFields, isSubmitting } } = useForm();
 
     const [dateCatch, setDateCatch] = useState(new Date());
     const [dateDeliver, setDateDeliver] = useState(new Date());
@@ -132,7 +132,7 @@ export default function FormOrder() {
 
                         {/* Get id for image POST */}
                         const id = res.data.id;
-                        navigate(`imageUploader/${id}`);
+                        navigate(`/imageUploader/${id}`);
 
                         console.log("Registrado correctamente:", res.data);
 
@@ -152,10 +152,11 @@ export default function FormOrder() {
             <form className="max-w-sm mx-auto" onSubmit={handleSubmit(onSubmit)}>
                 <div className="mt-5">
                     <label htmlFor="type" className="block mb-2 text-sm font-medium text-gray-900">
-                        Tipo de carga
+                        Tipo de carga<span className="text-red-500 ml-1">*</span>
                     </label>
                     <select
                         id="type"
+                        required
                         {...register("type")}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                     >
@@ -169,7 +170,7 @@ export default function FormOrder() {
 
                 <div className="mt-5">
                     <label htmlFor="dateCatch" className="block mb-2 text-sm font-medium text-gray-900">
-                        Fecha de retiro
+                        Fecha de retiro<span className="text-red-500 ml-1">*</span>
                     </label>
                     <DatePicker
                         id="dateCatch"
@@ -183,7 +184,7 @@ export default function FormOrder() {
 
                 <div className="mt-5">
                     <label htmlFor="dateDeliver" className="block mb-2 text-sm font-medium text-gray-900">
-                        Fecha de entrega
+                        Fecha de entrega<span className="text-red-500 ml-1">*</span>
                     </label>
                     <DatePicker
                         id="dateDeliver"
@@ -201,11 +202,13 @@ export default function FormOrder() {
 
                     <div className="mt-5">
                         <label htmlFor="provinceCatch" className="block mb-2 text-sm font-medium text-gray-900">
-                            Provincia
+                            Provincia<span className="text-red-500 ml-1">*</span>
                         </label>
                         <select
                             id="provinceCatch"
-                            {...register("provinceCatch")}
+                            {...register("provinceCatch", {
+                                required: 'El campo Provincia es requerido',
+                            })}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             onChange={handleProvinceCatchChange}
                         >
@@ -216,15 +219,18 @@ export default function FormOrder() {
                                 </option>
                             ))}
                         </select>
+                        {errors.provinceCatch && <p className="text-red-500 text-sm">{errors.provinceCatch.message}</p>}
                     </div>
 
                     <div className="mt-5">
                         <label htmlFor="locationCatch" className="block mb-2 text-sm font-medium text-gray-900">
-                            Localidad
+                            Localidad<span className="text-red-500 ml-1">*</span>
                         </label>
                         <select
                             id="locationCatch"
-                            {...register("locationCatch")}
+                            {...register("locationCatch", {
+                                required: 'El campo Localidad es requerido',
+                            })}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             disabled={!selectedProvinceCatchId}
                             onChange={handleLocationCatchChange}
@@ -236,30 +242,37 @@ export default function FormOrder() {
                                 </option>
                             ))}
                         </select>
+                        {errors.locationCatch && <p className="text-red-500 text-sm">{errors.locationCatch.message}</p>}
                     </div>
 
                     <div className="mt-5">
                         <label htmlFor="streetCatch" className="block mb-2 text-sm font-medium text-gray-900">
-                            Calle
+                            Calle<span className="text-red-500 ml-1">*</span>
                         </label>
                         <input
                             id="streetCatch"
-                            {...register("streetCatch")}
+                            {...register("streetCatch", {
+                                required: 'El campo Calle es requerido',
+                            })}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Calle"
                         />
+                        {errors.streetCatch && <p className="text-red-500 text-sm">{errors.streetCatch.message}</p>}
                     </div>
 
                     <div className="mt-5">
                         <label htmlFor="numberCatch" className="block mb-2 text-sm font-medium text-gray-900">
-                            Número
+                            Número<span className="text-red-500 ml-1">*</span>
                         </label>
                         <input
                             id="numberCatch"
-                            {...register("numberCatch")}
+                            {...register("numberCatch", {
+                                required: 'El campo Número es requerido',
+                            })}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Número"
                         />
+                        {errors.numberCatch && <p className="text-red-500 text-sm">{errors.numberCatch.message}</p>}
                     </div>
 
                     <div className="mt-5">
@@ -280,11 +293,13 @@ export default function FormOrder() {
                     <hr className="border-1 border-gray-700 mt-2" />
                     <div className="mt-5">
                         <label htmlFor="provinceDeliver" className="block mb-2 text-sm font-medium text-gray-900">
-                            Provincia
+                            Provincia<span className="text-red-500 ml-1">*</span>
                         </label>
                         <select
                             id="provinceDeliver"
-                            {...register("provinceDeliver")}
+                            {...register("provinceDeliver", {
+                                required: 'El campo Provincia es requerido',
+                            })}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             onChange={handleProvinceDeliverChange}
                         >
@@ -295,15 +310,18 @@ export default function FormOrder() {
                                 </option>
                             ))}
                         </select>
+                        {errors.provinceDeliver && <p className="text-red-500 text-sm">{errors.provinceDeliver.message}</p>}
                     </div>
 
                     <div className="mt-5">
                         <label htmlFor="locationDeliver" className="block mb-2 text-sm font-medium text-gray-900">
-                            Localidad
+                            Localidad<span className="text-red-500 ml-1">*</span>
                         </label>
                         <select
                             id="locationDeliver"
-                            {...register("locationDeliver")}
+                            {...register("locationDeliver", {
+                                required: 'El campo Localidad es requerido',
+                            })}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             disabled={!selectedProvinceDeliverId}
                             onChange={handleLocationDeliverChange}
@@ -315,30 +333,37 @@ export default function FormOrder() {
                                 </option>
                             ))}
                         </select>
+                        {errors.locationDeliver && <p className="text-red-500 text-sm">{errors.locationDeliver.message}</p>}
                     </div>
 
                     <div className="mt-5">
                         <label htmlFor="streetDeliver" className="block mb-2 text-sm font-medium text-gray-900">
-                            Calle
+                            Calle<span className="text-red-500 ml-1">*</span>
                         </label>
                         <input
                             id="streetDeliver"
-                            {...register("streetDeliver")}
+                            {...register("streetDeliver", {
+                                required: 'El campo Calle es requerido',
+                            })}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Calle"
                         />
+                        {errors.streetDeliver && <p className="text-red-500 text-sm">{errors.streetDeliver.message}</p>}
                     </div>
 
                     <div className="mt-5">
                         <label htmlFor="numberDeliver" className="block mb-2 text-sm font-medium text-gray-900">
-                            Número
+                            Número<span className="text-red-500 ml-1">*</span>
                         </label>
                         <input
                             id="numberDeliver"
-                            {...register("numberDeliver")}
+                            {...register("numberDeliver", {
+                                required: 'El campo Número es requerido',
+                            })}
                             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                             placeholder="Número"
                         />
+                        {errors.numberDeliver && <p className="text-red-500 text-sm">{errors.numberDeliver.message}</p>}
                     </div>
 
                     <div className="mt-5">
