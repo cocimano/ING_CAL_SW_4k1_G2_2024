@@ -9,20 +9,21 @@ export default function DeliveredOrder() {
     const { enqueueSnackbar } = useSnackbar();
     const [loading, setLoading] = useState(true);
 
-    const fetchPendingOrders = async () => {
+    const fetchDeliveredOrders = async () => {
         try {
             const data = await orderService.getOrdersDelivered();
-            setDeliveredOrders(data);
+            const sortedData = data.sort((a, b) => b.id - a.id); 
+            setDeliveredOrders(sortedData);
             setLoading(false);
-
+    
         } catch (error) {
             enqueueSnackbar("Error al obtener los pedidos de envío", { variant: "error" });
-
         }
     }
+    
 
     useEffect(() => {
-        fetchPendingOrders();
+        fetchDeliveredOrders();
     }, []);
 
     return (

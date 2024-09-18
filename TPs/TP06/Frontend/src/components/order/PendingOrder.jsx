@@ -11,14 +11,15 @@ export default function PendingOrder() {
     const fetchPendingOrders = async () => {
         try {
             const data = await orderService.getOrdersPending();
-            setPendingOrders(data);
+            const sortedData = data.sort((a, b) => b.id - a.id); 
+            setPendingOrders(sortedData);
             setLoading(false);
-
+    
         } catch (error) {
-            enqueueSnackbar("Error al obtener los pedidos de envío", { variant: "error" });
-
+            enqueueSnackbar("Error al obtener los pedidos pendientes", { variant: "error" });
         }
     }
+    
 
     useEffect(() => {
         fetchPendingOrders();
