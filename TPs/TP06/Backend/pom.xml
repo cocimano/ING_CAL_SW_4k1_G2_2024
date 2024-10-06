@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>utn.frc.isi.is.g2</groupId>
-    <artifactId>IS-TP6-Back</artifactId>
+    <artifactId>TP06-Back</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>IS-TP6-Back</name>
     <description>IS-TP6-Back</description>
