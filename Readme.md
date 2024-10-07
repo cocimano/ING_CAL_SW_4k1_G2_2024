@@ -36,42 +36,46 @@ Integrantes del Grupo
 
 ## **Listado de ítems de configuración**
 
-| **Nombre** | **Regla de Nombrado** | **Ubicación** |
-| --- | --- | --- |
-| Enunciado de Trabajo Práctico | IS_<TPXX>_Enunciado.pdf | <URL_Repo>/TPs/<TPXX> |
-| Entregable de Trabajo Práctico | IS_<TPXX>_<Tema_TP>.pdf | <URL_Repo>/TPs/<TPXX> |
-| Enunciado de Trabajo Conceptual | IS_<TCX>_Enunciado.pdf | <URL_Repo>/TCs/<TCX> |
-| Entregable de Trabajo Conceptual | IS_<TCX>_<Tema_TC>.pdf | <URL_Repo>/TCs/<TCX> |
-| Parciales Resueltos | IS_Resolución_<Leg>.pdf | <URL_Repo>/Parciales/<ParcialX> |
-| Parciales Templates | IS_Template.docx | <URL_Repo>/Parciales/<ParcialX> |
-| Ejercicios Prácticos Resolución | IS_Ejercicio_<NE>_<Leg>.pdf | <URL_Repo>/EPs/Resoluciones |
-| Ejercicios Prácticos Enunciados | IS_<Nombre_Guía>.pdf | <URL_Repo>/EPs/Enunciados |
-| Bibliografía | IS_<Tema_B>_<Título_B>.pdf | <URL_Repo>/Bibliografías |
-| Presentaciones de Clase | IS_<ClaseXX>_<Tema_C>.pdf | <URL_Repo>/Presentaciones |
+| **Nombre**                       | **Regla de Nombrado**         | **Ubicación**                        |
+|----------------------------------|-------------------------------|--------------------------------------|
+| Enunciado de Trabajo Práctico    | `IS_<TPXX>_Enunciado.pdf`     | `<Nombre_Repo>/TPs/<TPXX>`           |
+| Entregable de Trabajo Práctico   | `IS_<TPXX>_<Tema_TP>.pdf`     | `<Nombre_Repo>/TPs/<TPXX>`           |
+| Correccion de Trabajo Práctico   | `IS_<TPXX>_Correccion.pdf`    | `<Nombre_Repo>/TPs/<TPXX>`           |
+| Enunciado de Trabajo Conceptual  | `IS_<TCX>_Enunciado.pdf`      | `<Nombre_Repo>/TCs/<TCX>`            |
+| Entregable de Trabajo Conceptual | `IS_<TCX>_<Tema_TC>.pdf`      | `<Nombre_Repo>/TCs/<TCX>`            |
+| Parciales Resueltos              | `IS_Resolución_<Leg>.pdf`     | `<Nombre_Repo>/Parciales/<ParcialX>` |
+| Parciales Templates              | `IS_Template.docx`            | `<Nombre_Repo>/Parciales/<ParcialX>` |
+| Ejercicios Prácticos Resolución  | `IS_Ejercicio_<NE>_<Leg>.pdf` | `<Nombre_Repo>/EPs/Resoluciones`     |
+| Ejercicios Prácticos Enunciados  | `IS_<Nombre_Guía>.pdf`        | `<Nombre_Repo>/EPs/Enunciados`       |
+| Bibliografía                     | `IS_<Tema_B>_<Título_B>.pdf`  | `<Nombre_Repo>/Bibliografías`        |
+| Presentaciones de Clase          | `IS_<ClaseXX>_<Tema_C>.pdf`   | `<Nombre_Repo>/Presentaciones`       |
+| Modalidad Académica              | `IS_Modalidad_Académica.pdf`  | `<Nombre_Repo>/Info_General`         |
+
+Nota: Se incluirán solo los TPs Entregables. El item Entregable de Trabajo Práctico solo se incluira cuando exista tal archivo para ese entregable
 
 ## **Glosario**
 
-| **Sigla** | **Significado** |
-| --- | --- |
-| \<URL_Repo> | Dirección web del repositorio: https://github.com/cocimano/ING_CAL_SW_4k1_G2_2024/blob/main |
-| \<TPXX> | Número de Trabajo Práctico. Ejemplos: TP01, TP15 |
-| \<Tema_TP> | Nombre Tema Correspondiente al TP |
-| \<TCX> | Número de Trabajo Conceptual. Ejemplos: TC01, TC15 |
-| \<Tema_TC> | Nombre Tema Correspondiente al TC |
-| \<NE> | Nombre de Ejercicio |
-| \<ParcialX> | Número de Parcial. Ejemplos: Parcial1, Parcial2 |
-| \<Leg> | Legajo estudiante que desarrolló el archivo |
-| \<Nombre_Guía> | Nombre de la guía de trabajos prácticos. Ejemplo: |
-| \<Tema_B> | Nombre del tema correspondiente a la bibliografía |
-| \<Título_B> | Nombre de la bibliografía |
-| IS | Nombre de la materia, Ingeniería y Calidad de Software |
-| \<ClaseXX> | Número de clase. Ejemplos: 01, 02, 10 |
-| <Tema_C> | Tema Clase. Ejemplo: SCM |
+| **Sigla**       | **Significado**                                        |
+|-----------------|--------------------------------------------------------|
+| `<Nombre_Repo>` | Nombre del repositorio: ING_CAL_SW_4k1_G2_2024         |
+| `<TPXX>`        | Número de Trabajo Práctico. Ejemplos: TP01, TP15       |
+| `<Tema_TP>`     | Nombre Tema Correspondiente al TP                      |
+| `<TCX>`         | Número de Trabajo Conceptual. Ejemplos: TC01, TC15     |
+| `<Tema_TC>`     | Nombre Tema Correspondiente al TC                      |
+| `<NE>`          | Nombre de Ejercicio                                    |
+| `<ParcialX>`    | Número de Parcial. Ejemplos: Parcial1, Parcial2        |
+| `<Leg>`         | Legajo estudiante que desarrolló el archivo            |
+| `<Nombre_Guía>` | Nombre de la guía de trabajos prácticos. Ejemplo:      |
+| `<Tema_B>`      | Nombre del tema correspondiente a la bibliografía      |
+| `<Título_B>`    | Nombre de la bibliografía                              |
+| `IS`            | Nombre de la materia, Ingeniería y Calidad de Software |
+| `<ClaseXX>`     | Número de clase. Ejemplos: 01, 02, 10                  |
+| `<Tema_C>`      | Tema Clase. Ejemplo: SCM                               |
 
 ## **Criterios de línea base**
 
-La línea base se actualizará después de recibir y aplicar las correcciones correspondientes a cada Trabajo Práctico, asegurando que los cambios reflejen las mejoras y ajustes solicitados por las docentes.
+La línea base se actualizará luego de cada entrega de trabajo práctico.
 
 ## **Link a repositorio:**
 
-[https://github.com/ING_CAL_SW_4k1_G2_2024](https://github.com/cocimano/ING_CAL_SW_4k1_G2_2024)
+[https://github.com/cocimano/ING_CAL_SW_4k1_G2_2024](https://github.com/cocimano/ING_CAL_SW_4k1_G2_2024)
